@@ -40,9 +40,11 @@ function getMostCommonGenres(books) {
 function getMostPopularBooks(books) {
   const mostPopular = [];
   makePopularBookArray(books, mostPopular)
-  mostPopular.sort((bookA, bookB) => bookB.count - bookA.count);
-  return mostPopular.slice(0, 5);
+  return mostPopular.sort((bookA, bookB) => bookB.count - bookA.count).slice(0, 5);
 }
+
+// helper function takes an empty array and an array of books and chooses which books belong in the
+// popular book array so the function it helps can take the newly formed array and sort it
 
 const makePopularBookArray = (bookArray, emptyArray) => {
   for (let book of bookArray) {
