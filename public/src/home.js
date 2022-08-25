@@ -39,14 +39,18 @@ function getMostCommonGenres(books) {
 
 function getMostPopularBooks(books) {
   const mostPopular = [];
-  for (let book of books) {
-    if (mostPopular.length === 0 || !mostPopular.some(popularBook => popularBook.name === book.title)) {
-      let popularBook = { name: book.title, count: book.borrows.length};
-      mostPopular.push(popularBook);
-    }
-  }
+  makePopularBookArray(books, mostPopular)
   mostPopular.sort((bookA, bookB) => bookB.count - bookA.count);
   return mostPopular.slice(0, 5);
+}
+
+const makePopularBookArray = (books, emptyArray) => {
+  for (let book of books) {
+    if (emptyArray.length === 0 || !emptyArray.some(popularBook => popularBook.name === book.title)) {
+      let popularBook = { name: book.title, count: book.borrows.length};
+      emptyArray.push(popularBook);
+    }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
