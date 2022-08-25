@@ -44,8 +44,8 @@ function getMostPopularBooks(books) {
   return mostPopular.slice(0, 5);
 }
 
-const makePopularBookArray = (books, emptyArray) => {
-  for (let book of books) {
+const makePopularBookArray = (bookArray, emptyArray) => {
+  for (let book of bookArray) {
     if (emptyArray.length === 0 || !emptyArray.some(popularBook => popularBook.name === book.title)) {
       let popularBook = { name: book.title, count: book.borrows.length};
       emptyArray.push(popularBook);
